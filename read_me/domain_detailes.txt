@@ -1,0 +1,15 @@
+
+000webhost:
+Host	files.000webhost.com
+Username	ocimapp
+Password	A12412164
+
+Email:
+ocimapp2020@gmail.com
+a95112401
+
+
+Hostenger:
+ftp://ocimapp.ml
+u969104633
+A12412164
