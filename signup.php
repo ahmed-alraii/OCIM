@@ -14,7 +14,7 @@ require 'includes/index_menu.php';
                 <h2 class=""> User Register Here</h2>
                 <form class="form-login" action="signup_code.php" method="post">
 
-                    <input class="form-control" type="number" name="s_id" id="s_id" placeholder="student id" required>
+                    <input class="form-control" type="text" name="s_id" id="s_id" placeholder="student id" required>
                     <br />
                     <input class="form-control" type="text" name="f_name" id="f_name" placeholder="full name" required>
                     <br />
