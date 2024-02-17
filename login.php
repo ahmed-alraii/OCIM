@@ -22,7 +22,7 @@ require 'includes/index_menu.php';
                         <br />
                         <input class="btn btn-block btn-red" type="submit" value="Login" name="login" id="login">
 
-                        <p class="">You Don Not Have Account Yet ? SignUp Now</p>
+                        <p class="">You Do Not Have Account Yet ? SignUp Now</p>
 
                         <a href="signup.php" class="btn btn-block btn-red">SignUp</a>
 
