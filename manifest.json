@@ -4,7 +4,7 @@
   "theme_color": "#c4d762",
   "background_color": "#ccdd74",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "portrait-primary.",
   "Scope": ".",
   "start_url": "index.php",
   "icons": [{
