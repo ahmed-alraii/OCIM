@@ -16,7 +16,7 @@ require 'includes/index_menu.php';
                     <h1> Login Page</h1>
                     <form class="form-login" method="post" action="login_code.php">
 
-                        <input class="form-control" type="text" name="user_name" id="user_name" placeholder="student id" required>
+                        <input class="form-control" type="number" name="user_name" id="user_name" placeholder="student id" required>
                         <br />
                         <input class="form-control" type="password" name="user_pass" id="user_pass" placeholder="password" required>
                         <br />
