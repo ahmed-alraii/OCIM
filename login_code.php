@@ -65,8 +65,8 @@ window.location = "student/find_image.php";
     } else {
 
         echo "<script>
-    alert(\"Login Failed. Try Again................\");
-  //  window.location = 'login.php';
+    alert(\"Wrong Student Id Or Password\");
+    window.location = 'login.php';
     
 </script>";
     }
