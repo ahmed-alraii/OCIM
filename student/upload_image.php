@@ -5,9 +5,6 @@
 require '../includes/app_header.php';
 require '../includes/app_menu.php';
 
-
-
-
 if (empty($_SESSION['is_login'])) {
 
     header("Location:../login.php");

@@ -3,9 +3,40 @@ session_start();
 
 include("../includes/config.php");
 
+require '../vendor/autoload.php';
+
+use Aws\S3\S3Client;
+
+
+
+$region = 'ap-south-1';
+// Amazon S3 API credentials
+$access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
+$secret_access_key = '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';
+$bucket = "ocim-app";
+
+// Instantiate an Amazon S3 client
+$s3 = new S3Client([
+    //  'version' => $version,
+    'region' => $region,
+    'credentials' => [
+        'key' => $access_key_id,
+        'secret' => $secret_access_key
+    ]
+]);
+
+
+
+
+
+
 $f_name = $_GET['f_name'];
 $c_code = $_GET['c_code'];
 $u_id = $_SESSION['user_data']['u_id'];
+
+$res = $s3->deleteObject( [
+    'Bucket' => $bucket, "Key" => "$s3Url".$_SESSION['user_data']['u_s_id']."/$c_code/$f_name"
+]);
 
 $res_delete = mysqli_query($conn, "delete from course_file where c_code = '$c_code' and f_name = '$f_name' and u_id = $u_id ");
 

@@ -24,7 +24,9 @@ window.location = "admin_login.php";
 require '../includes/app_header.php';
 require '../includes/app_menu.php';
 
+require '../vendor/autoload.php';
 
+use Aws\S3\S3Client;
 
 
 if (empty($_SESSION['is_login'])) {
@@ -133,6 +135,24 @@ if (empty($_SESSION['is_login'])) {
 
                 if (isset($_POST['find_files'])) {
 
+
+                    $region = 'ap-south-1';
+                    // Amazon S3 API credentials
+                    $access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
+                    $secret_access_key = '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';
+                    $bucket = "ocim-app";
+
+                    // Instantiate an Amazon S3 client
+                    $s3 = new S3Client([
+                        //  'version' => $version,
+                        'region' => $region,
+                        'credentials' => [
+                            'key' => $access_key_id,
+                            'secret' => $secret_access_key
+                        ]
+                    ]);
+
+
                     $isClicked = true;
                     $c_code = $_POST["selected_course"];
                 } elseif (isset($_GET["c_code"])) {
@@ -216,7 +236,7 @@ if (empty($_SESSION['is_login'])) {
                                 $c_code = $rows['c_code'];
                                 $f_name = $rows['f_name'];
                                 $f_type = $rows['f_type'];
-                                $f_path = $rows['f_path'];
+                                $f_path = $s3->getObjectUrl( $bucket, "$s3Url".$_SESSION['user_data']['u_s_id']."/$c_code/$f_name");
 
                                 ?>
 
