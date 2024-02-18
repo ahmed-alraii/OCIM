@@ -70,6 +70,7 @@ if (empty($_SESSION['is_login'])) {
 
                                 include('../includes/config.php');
                                 $u_id = $_SESSION['user_data']['u_id'];
+
                                 $res = mysqli_query($conn, "select c_code from course where u_id = $u_id ");
 
 
@@ -131,26 +132,27 @@ if (empty($_SESSION['is_login'])) {
 
 
 
+                $region = 'ap-south-1';
+                // Amazon S3 API credentials
+                $access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
+                $secret_access_key = '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';
+                $bucket = "ocim-app";
+
+                // Instantiate an Amazon S3 client
+                $s3 = new S3Client([
+                    //  'version' => $version,
+                    'region' => $region,
+                    'credentials' => [
+                        'key' => $access_key_id,
+                        'secret' => $secret_access_key
+                    ]
+                ]);
+
+
                 // when clink find_files button
 
                 if (isset($_POST['find_files'])) {
 
-
-                    $region = 'ap-south-1';
-                    // Amazon S3 API credentials
-                    $access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
-                    $secret_access_key = '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';
-                    $bucket = "ocim-app";
-
-                    // Instantiate an Amazon S3 client
-                    $s3 = new S3Client([
-                        //  'version' => $version,
-                        'region' => $region,
-                        'credentials' => [
-                            'key' => $access_key_id,
-                            'secret' => $secret_access_key
-                        ]
-                    ]);
 
 
                     $isClicked = true;
@@ -192,7 +194,7 @@ if (empty($_SESSION['is_login'])) {
                     <?php include('../includes/config.php');
 
 
-                        $total_res = mysqli_query($conn, "select count(*) from course_file where c_code = '$c_code' ");
+                        $total_res = mysqli_query($conn, "select count(*) from course_file where c_code = '$c_code' and u_id = $u_id ");
                         $t_files = mysqli_fetch_array($total_res);
                         $total = array_shift($t_files);
 
@@ -221,10 +223,10 @@ if (empty($_SESSION['is_login'])) {
 
 
 
-                            $res = mysqli_query($conn, "select * from course_file where c_code = '$c_code'  LIMIT $showFileFrom , 6");
+                            $res = mysqli_query($conn, "select * from course_file where c_code = '$c_code' and u_id = $u_id  LIMIT $showFileFrom , 6");
                         } else {
 
-                            $res = mysqli_query($conn, "select * from course_file where c_code = '$c_code'  LIMIT 0 , 6 ");
+                            $res = mysqli_query($conn, "select * from course_file where c_code = '$c_code' and u_id = $u_id  LIMIT 0 , 6 ");
                         }
 
 

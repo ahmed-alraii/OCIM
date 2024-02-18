@@ -74,11 +74,14 @@ if (isset($_POST['upload_file'])) {
 
                 // Upload file to S3 bucket
                 try{
+                    $requestHeaders['Cache-Control'] = 'public, max-age=31536000';
+                    $requestHeaders['Expires'] = gmdate("D, d M Y H:i:s T", strtotime("+1 years"));
                     $result = $s3->putObject([
                        'Bucket' => $bucket,
                         'Key' => "student/uploads/$student_id/$course_code/$file_new_name",
                         'SourceFile' => $file_temp_src,
                         'ContentType' =>"image/$file_type",
+                        'ACL' => 'public-read'
                     ]);
 
 
@@ -90,6 +93,7 @@ if (isset($_POST['upload_file'])) {
                     }else{
                         $api_error = 'Upload Failed!! S3 Object URL not found';
                     }
+
 
 
                 }catch (S3Exception $exception){
@@ -106,6 +110,8 @@ if (isset($_POST['upload_file'])) {
                         window.location = "upload_image.php";
                     </script>
                 <?php } else {
+                    var_dump( $api_error);
+                    exit;
 
                     ?>
                     <script>
