@@ -9,12 +9,6 @@ use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
 
 
-$region = 'ap-south-1';
-// Amazon S3 API credentials
-$access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
-$secret_access_key = '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';
-$bucket = "ocim-app";
-
 // Instantiate an Amazon S3 client
 $s3 = new S3Client([
     'region' => $region,

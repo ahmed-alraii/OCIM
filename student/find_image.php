@@ -121,13 +121,6 @@ if (empty($_SESSION['is_login'])) {
 
                 if (isset($_POST['find_files'])) {
 
-
-                    $region = 'ap-south-1';
-                   // Amazon S3 API credentials
-                    $access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
-                    $secret_access_key = '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';
-                    $bucket = "ocim-app";
-
                     // Instantiate an Amazon S3 client
                     $s3 = new S3Client([
                         //  'version' => $version,

@@ -127,16 +127,11 @@ if (empty($_SESSION['is_login'])) {
 
                 <?php
 
+                include('../includes/config.php');
+
+
                 $isClicked = true;
                 $file_per_page;
-
-
-
-                $region = 'ap-south-1';
-                // Amazon S3 API credentials
-                $access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
-                $secret_access_key = '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';
-                $bucket = "ocim-app";
 
                 // Instantiate an Amazon S3 client
                 $s3 = new S3Client([
@@ -191,7 +186,7 @@ if (empty($_SESSION['is_login'])) {
 
                     </h1>
 
-                    <?php include('../includes/config.php');
+                    <?php
 
 
                         $total_res = mysqli_query($conn, "select count(*) from course_file where c_code = '$c_code' and u_id = $u_id ");

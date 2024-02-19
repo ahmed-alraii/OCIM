@@ -27,16 +27,6 @@ if ($c_code == '0') {
 }
 
 
-// upload files to s3
-
-$region = 'ap-south-1';
-$version =" latest";
-// Amazon S3 API credentials
-$access_key_id = 'AKIAVRUVQ4QHCJGKQ357';
-$secret_access_key = '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';
-$bucket = "ocim-app";
-
-
 if (isset($_POST['upload_file'])) {
 
     $file_new_name = trim($_POST['new_name']);
